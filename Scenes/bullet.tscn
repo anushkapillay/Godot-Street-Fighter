@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0dvigpnpaluh"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyAI/bullet.gd" id="1_3yx5o"]
+[ext_resource type="Texture2D" uid="uid://cxwijc7ycnbfp" path="res://sprites/Enemy/arm_projectile_glowing.png" id="1_wvjsi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5f8q"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(0, 0, 100, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwjv7"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(100, 0, 100, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4u45"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(200, 0, 100, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6dhr"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(0, 75, 100, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eof2x"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(100, 75, 100, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjcr2"]
+atlas = ExtResource("1_wvjsi")
+region = Rect2(200, 75, 100, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ys2jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5f8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwjv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4u45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6dhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eof2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjcr2")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uckg"]
+size = Vector2(105, 32)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_3yx5o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys2jl")
+animation = &"bullet"
+autoplay = "bullet"
+frame = 2
+frame_progress = 0.156799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(80.5, 0)
+shape = SubResource("RectangleShape2D_3uckg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

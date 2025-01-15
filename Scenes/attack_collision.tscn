@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7xifi05q25kd"]
+
+[ext_resource type="Script" path="res://Scripts/player/AttackCollision.gd" id="1_v2pjt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfab2"]
+radius = 122.672
+
+[node name="AttackCollision" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_v2pjt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-86.5, -85.5)
+shape = SubResource("CircleShape2D_vfab2")
+debug_color = Color(0.835294, 0.333333, 0.533333, 0.419608)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl7awwi37k3uh"]
+
+[ext_resource type="Texture2D" uid="uid://cakdt1mmvj1cr" path="res://sprites/player/ryu-stage.jpg" id="1_oxk7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f3k3"]
+size = Vector2(1332.58, 324.236)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvcrw"]
+size = Vector2(98.9082, 2095.06)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(556.001, 298.25)
+scale = Vector2(1.025, 1.17079)
+texture = ExtResource("1_oxk7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(517.5, 594.25)
+scale = Vector2(2.05241, 0.340801)
+shape = SubResource("RectangleShape2D_4f3k3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-164.5, 293)
+scale = Vector2(2.05241, 0.340801)
+shape = SubResource("RectangleShape2D_bvcrw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(1262, 296)
+scale = Vector2(2.05241, 0.340801)
+shape = SubResource("RectangleShape2D_bvcrw")

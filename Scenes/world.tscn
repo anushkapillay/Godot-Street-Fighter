@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://e3sgxwt406ro"]
+
+[ext_resource type="PackedScene" uid="uid://dl7awwi37k3uh" path="res://Scenes/stage.tscn" id="1_8055g"]
+[ext_resource type="PackedScene" uid="uid://durqriy6ca1q4" path="res://Scenes/player.tscn" id="2_bikw0"]
+[ext_resource type="PackedScene" uid="uid://gvqrcsiwbqoj" path="res://Scenes/enemy.tscn" id="3_81l8r"]
+
+[node name="World" type="Node2D"]
+
+[node name="Stage" parent="." instance=ExtResource("1_8055g")]
+position = Vector2(62, -115)
+scale = Vector2(1.45917, 1.60478)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(570, 429)
+process_callback = 0
+limit_left = 0
+limit_right = 1300
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_81l8r")]
+position = Vector2(1210, 570)
+
+[node name="player" parent="." instance=ExtResource("2_bikw0")]
+position = Vector2(430, 665)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+position = Vector2(140, -236)
+remote_path = NodePath("../../Camera2D")
